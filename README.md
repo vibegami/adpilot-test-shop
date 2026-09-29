@@ -6,7 +6,8 @@ and order on it is fictional. It is not a real business and takes no orders.
 
 - Google Tag Manager test container `GTM-T897QT2B` on every page, with a Consent
   Mode v2 default set before it.
-- `index.html`: CTA button `#cta-siparis-ver`, tel:, mailto:, wa.me links,
+- `index.html`: CTA button `#cta-siparis-ver`, a second CTA
+  `#cta-tadim-iste` whose text sits in child spans, tel:, mailto:, wa.me links,
   a plain form `#iletisim-formu` (success element `#form-basari`) and a
   pushState link (`?bolum=menu`).
 - `iletisim.html`: Contact Form 7 markup, fires `wpcf7mailsent` on a fake send.

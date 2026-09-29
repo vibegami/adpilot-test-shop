@@ -66,6 +66,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>Deneme Kahve Dükkanı her hafta küçük partiler halinde kavurur. (Kurgusal işletme: bu sayfa bir ölçüm test sitesidir.)</p>
     <button type="button" class="btn" id="cta-siparis-ver" data-gtm="cta-siparis-ver">Hemen sipariş ver</button>
     <a class="btn ikincil" href="https://wa.me/905550000000?text=Merhaba%2C%20kahve%20siparisi%20hakkinda%20bilgi%20almak%20istiyorum" target="_blank" rel="noopener">WhatsApp ile yazın</a>
+    <!-- A button whose text sits in child elements: a click usually lands on a span, not the button. -->
+    <button type="button" class="btn ikincil" id="cta-tadim-iste"><span class="ikon" aria-hidden="true">☕</span> <span class="etiket">Ücretsiz tadım iste</span></button>
+    <p id="tadim-mesaj" class="basari" role="status" hidden>Tadım talebiniz alındı (test: hiçbir yere gönderilmedi).</p>
   </div>
 </section>
 <section>
@@ -123,6 +126,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   (function () {
     document.getElementById('cta-siparis-ver').addEventListener('click', function () {
       window.location.href = 'products.html';
+    });
+    document.getElementById('cta-tadim-iste').addEventListener('click', function () {
+      document.getElementById('tadim-mesaj').hidden = false;
     });
 
     var form = document.getElementById('iletisim-formu');
