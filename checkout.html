@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Ödeme | Deneme Kahve Dükkanı (test sitesi)</title>
+<meta name="description" content="AdPilot ölçüm testleri için kurgusal kahve dükkanı. Gerçek bir işletme değildir.">
+<!-- Consent Mode v2 default: must run before Google Tag Manager -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  (function () {
+    var choice = null;
+    try { choice = JSON.parse(localStorage.getItem('deneme_consent')); } catch (e) {}
+    if (choice === 'granted') {
+      gtag('consent', 'update', {
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        analytics_storage: 'granted'
+      });
+    }
+  })();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T897QT2B');</script>
+<!-- End Google Tag Manager -->
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/site.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T897QT2B"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="test-serit">Bu bir <strong>test sitesidir</strong>. Ürünler, fiyatlar ve iletişim bilgileri kurgusaldır; sipariş alınmaz.</div>
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="index.html">☕ Deneme Kahve Dükkanı</a>
+    <ul>
+      <li><a href="index.html">Ana sayfa</a></li>
+      <li><a href="products.html">Ürünler</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+      <li><a href="cart.html">Sepet (<span id="sepet-adet">0</span>)</a></li>
+    </ul>
+  </div>
+</header>
+<main>
+<section>
+  <div class="wrap">
+    <h1>Ödeme (test)</h1>
+    <div class="adimlar"><span id="adim-teslimat" class="aktif">1. Teslimat</span><span id="adim-odeme">2. Ödeme</span></div>
+    <div class="kart" id="teslimat-bolumu">
+      <p>Test sitesi: kişisel bilgi girmeyin. Alanlar yalnızca görünüm içindir ve hiçbir yere gönderilmez.</p>
+      <label>Ad soyad <input type="text" name="ad" value="Deneme Müşteri" autocomplete="off"></label>
+      <label>Şehir <input type="text" name="sehir" value="İstanbul" autocomplete="off"></label>
+      <button type="button" class="btn" id="odeme-adimina-gec">Ödeme adımına geç</button>
+    </div>
+    <div class="kart" id="odeme-bolumu" hidden>
+      <p>Ödeme yöntemi: <strong>Kapıda ödeme (test)</strong>. Kart bilgisi istenmez.</p>
+      <p>Toplam: <strong id="odeme-toplam"></strong></p>
+      <button type="button" class="btn" id="siparisi-tamamla">Siparişi tamamla</button>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p><strong>Deneme Kahve Dükkanı</strong> gerçek bir işletme değildir. Bu site yalnızca AdPilot dönüşüm ölçümü testleri için hazırlanmış bir <strong>TEST SİTESİDİR</strong>; tüm veriler (ürünler, fiyatlar, telefon, e-posta, adres) kurgusaldır. Sipariş alınmaz, ödeme yapılmaz, form verisi hiçbir yere gönderilmez.</p>
+    <p>Kurgusal iletişim: <a href="tel:+905550000000">+90 555 000 00 00</a> · <a href="mailto:merhaba@example.com">merhaba@example.com</a> · Deneme Sokak No: 0, Örnek Mahallesi, İstanbul</p>
+  </div>
+</footer>
+<div id="cerez-bandi" role="dialog" aria-label="Çerez tercihi" hidden>
+  <strong>Çerez tercihi</strong>
+  <div>Bu test sitesi reklam ve analiz ölçümü için Google Tag Manager kullanır. Onay vermezseniz Consent Mode varsayılanı (reddedildi) geçerli kalır.</div>
+  <div class="butonlar">
+    <button type="button" class="btn" id="cerez-kabul">Kabul et</button>
+    <button type="button" class="btn ikincil" id="cerez-red">Reddet</button>
+  </div>
+</div>
+<script>
+  (function () {
+    var S = window.DenemeShop;
+    var items = S.cartItems();
+    if (!items.length) {
+      // Straight to checkout with an empty cart: use one sample item so the
+      // funnel can be tested from this page alone.
+      items = [S.toItem(S.PRODUCTS[0], 1)];
+      S.writeJson('deneme_cart', [{ id: S.PRODUCTS[0].id, quantity: 1 }]);
+    }
+    var value = S.cartValue(items);
+    document.getElementById('odeme-toplam').textContent = S.money(value);
+
+    S.pushEcommerce('begin_checkout', { currency: 'TRY', value: value, items: items });
+
+    function showPaymentStep() {
+      document.getElementById('teslimat-bolumu').hidden = true;
+      document.getElementById('odeme-bolumu').hidden = false;
+      document.getElementById('adim-teslimat').className = '';
+      document.getElementById('adim-odeme').className = 'aktif';
+    }
+
+    // Step two is a history change: the address becomes odeme.html with no
+    // page load (a single-page checkout step).
+    document.getElementById('odeme-adimina-gec').addEventListener('click', function () {
+      history.pushState({ adim: 'odeme' }, '', 'odeme.html');
+      showPaymentStep();
+      S.pushEcommerce('add_payment_info', {
+        currency: 'TRY', value: value, payment_type: 'Kapıda ödeme', items: items
+      });
+    });
+    window.addEventListener('popstate', function () { location.reload(); });
+    if (new URLSearchParams(location.search).get('adim') === 'odeme') showPaymentStep();
+
+    document.getElementById('siparisi-tamamla').addEventListener('click', function () {
+      var order = S.randomOrderId();
+      S.writeJson(S.LAST_ORDER_KEY, { order: order, items: items, value: value });
+      S.clearCart();
+      location.href = 'tesekkurler.html?order=' + encodeURIComponent(order);
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Teşekkürler | Deneme Kahve Dükkanı (test sitesi)</title>
+<meta name="description" content="AdPilot ölçüm testleri için kurgusal kahve dükkanı. Gerçek bir işletme değildir.">
+<!-- Consent Mode v2 default: must run before Google Tag Manager -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  (function () {
+    var choice = null;
+    try { choice = JSON.parse(localStorage.getItem('deneme_consent')); } catch (e) {}
+    if (choice === 'granted') {
+      gtag('consent', 'update', {
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        analytics_storage: 'granted'
+      });
+    }
+  })();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T897QT2B');</script>
+<!-- End Google Tag Manager -->
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/site.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T897QT2B"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="test-serit">Bu bir <strong>test sitesidir</strong>. Ürünler, fiyatlar ve iletişim bilgileri kurgusaldır; sipariş alınmaz.</div>
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="index.html">☕ Deneme Kahve Dükkanı</a>
+    <ul>
+      <li><a href="index.html">Ana sayfa</a></li>
+      <li><a href="products.html">Ürünler</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+      <li><a href="cart.html">Sepet (<span id="sepet-adet">0</span>)</a></li>
+    </ul>
+  </div>
+</header>
+<main>
+<section>
+  <div class="wrap">
+    <div class="kart">
+      <h1>Teşekkürler, siparişiniz alındı!</h1>
+      <p>Sipariş numarası: <strong id="siparis-no"></strong></p>
+      <p>Tutar: <strong id="siparis-tutar"></strong></p>
+      <p>Bu bir test siparişidir. Ödeme alınmadı, ürün gönderilmeyecek.</p>
+      <a class="btn" href="products.html">Alışverişe devam et</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p><strong>Deneme Kahve Dükkanı</strong> gerçek bir işletme değildir. Bu site yalnızca AdPilot dönüşüm ölçümü testleri için hazırlanmış bir <strong>TEST SİTESİDİR</strong>; tüm veriler (ürünler, fiyatlar, telefon, e-posta, adres) kurgusaldır. Sipariş alınmaz, ödeme yapılmaz, form verisi hiçbir yere gönderilmez.</p>
+    <p>Kurgusal iletişim: <a href="tel:+905550000000">+90 555 000 00 00</a> · <a href="mailto:merhaba@example.com">merhaba@example.com</a> · Deneme Sokak No: 0, Örnek Mahallesi, İstanbul</p>
+  </div>
+</footer>
+<div id="cerez-bandi" role="dialog" aria-label="Çerez tercihi" hidden>
+  <strong>Çerez tercihi</strong>
+  <div>Bu test sitesi reklam ve analiz ölçümü için Google Tag Manager kullanır. Onay vermezseniz Consent Mode varsayılanı (reddedildi) geçerli kalır.</div>
+  <div class="butonlar">
+    <button type="button" class="btn" id="cerez-kabul">Kabul et</button>
+    <button type="button" class="btn ikincil" id="cerez-red">Reddet</button>
+  </div>
+</div>
+<script>
+  (function () {
+    var S = window.DenemeShop;
+    var params = new URLSearchParams(location.search);
+    var last = S.readJson(S.LAST_ORDER_KEY, null);
+    var order = params.get('order') || (last && last.order) || S.randomOrderId();
+    var items = last && last.order === order ? last.items : [S.toItem(S.PRODUCTS[1], 2)];
+    var value = S.cartValue(items);
+    var shipping = 0;
+    var tax = S.round2(value - value / 1.2);
+
+    document.getElementById('siparis-no').textContent = order;
+    document.getElementById('siparis-tutar').textContent = S.money(value);
+
+    // GA4 purchase: value is a number, currency an ISO code, transaction_id
+    // the order number from the address.
+    window.dataLayer.push({ ecommerce: null });
+    window.dataLayer.push({
+      event: 'purchase',
+      ecommerce: {
+        transaction_id: order,
+        value: value,
+        tax: tax,
+        shipping: shipping,
+        currency: 'TRY',
+        coupon: '',
+        items: items
+      }
+    });
+  })();
+</script>
+</body>
+</html>

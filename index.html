@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Ana sayfa | Deneme Kahve Dükkanı (test sitesi)</title>
+<meta name="description" content="AdPilot ölçüm testleri için kurgusal kahve dükkanı. Gerçek bir işletme değildir.">
+<!-- Consent Mode v2 default: must run before Google Tag Manager -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  (function () {
+    var choice = null;
+    try { choice = JSON.parse(localStorage.getItem('deneme_consent')); } catch (e) {}
+    if (choice === 'granted') {
+      gtag('consent', 'update', {
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        analytics_storage: 'granted'
+      });
+    }
+  })();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T897QT2B');</script>
+<!-- End Google Tag Manager -->
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/site.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T897QT2B"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="test-serit">Bu bir <strong>test sitesidir</strong>. Ürünler, fiyatlar ve iletişim bilgileri kurgusaldır; sipariş alınmaz.</div>
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="index.html">☕ Deneme Kahve Dükkanı</a>
+    <ul>
+      <li><a href="index.html">Ana sayfa</a></li>
+      <li><a href="products.html">Ürünler</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+      <li><a href="cart.html">Sepet (<span id="sepet-adet">0</span>)</a></li>
+    </ul>
+  </div>
+</header>
+<main>
+<section class="hero">
+  <div class="wrap">
+    <h1>Taze kavrulmuş kahve, kapınıza kadar</h1>
+    <p>Deneme Kahve Dükkanı her hafta küçük partiler halinde kavurur. (Kurgusal işletme: bu sayfa bir ölçüm test sitesidir.)</p>
+    <button type="button" class="btn" id="cta-siparis-ver" data-gtm="cta-siparis-ver">Hemen sipariş ver</button>
+    <a class="btn ikincil" href="https://wa.me/905550000000?text=Merhaba%2C%20kahve%20siparisi%20hakkinda%20bilgi%20almak%20istiyorum" target="_blank" rel="noopener">WhatsApp ile yazın</a>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <h2>Neden biz?</h2>
+    <div class="grid">
+      <div class="kart"><h3>Haftalık kavrum</h3><p>Çekirdekler kavrulduktan en geç 3 gün sonra kargoda.</p></div>
+      <div class="kart"><h3>Tek kökenler</h3><p>Etiyopya, Kolombiya ve Brezilya'dan seçilmiş partiler.</p></div>
+      <div class="kart"><h3>Demleme desteği</h3><p>Bizi arayın, ekipmanınıza göre öğütme önerelim.</p></div>
+    </div>
+  </div>
+</section>
+<section id="iletisim">
+  <div class="wrap grid">
+    <div class="kart">
+      <h2>Bize ulaşın</h2>
+      <ul class="iletisim-listesi">
+        <li>Telefon: <a href="tel:+905550000000" id="telefon-linki">+90 555 000 00 00</a></li>
+        <li>E-posta: <a href="mailto:merhaba@example.com" id="eposta-linki">merhaba@example.com</a></li>
+        <li>WhatsApp: <a href="https://wa.me/905550000000" id="whatsapp-linki" target="_blank" rel="noopener">wa.me/905550000000</a></li>
+      </ul>
+      <p><a href="#menu" id="menu-sekmesi" data-bolum="menu">Menüyü göster</a> (sayfa yenilenmeden adres değişir: history change testi)</p>
+      <div id="menu" hidden>
+        <p>Espresso 60 TL · Filtre kahve 70 TL · Türk kahvesi 55 TL</p>
+      </div>
+    </div>
+    <div class="kart">
+      <h2>Hızlı iletişim formu</h2>
+      <form id="iletisim-formu" action="#" method="post" novalidate>
+        <label>Adınız <input type="text" name="ad" autocomplete="off" required></label>
+        <label>Telefon <input type="tel" name="telefon" autocomplete="off"></label>
+        <label>Mesajınız <textarea name="mesaj" rows="3"></textarea></label>
+        <button type="submit" class="btn" id="iletisim-gonder">Gönder</button>
+        <div id="form-basari" class="basari" role="status" hidden>Teşekkürler! Mesajınız alındı (test: hiçbir yere gönderilmedi).</div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p><strong>Deneme Kahve Dükkanı</strong> gerçek bir işletme değildir. Bu site yalnızca AdPilot dönüşüm ölçümü testleri için hazırlanmış bir <strong>TEST SİTESİDİR</strong>; tüm veriler (ürünler, fiyatlar, telefon, e-posta, adres) kurgusaldır. Sipariş alınmaz, ödeme yapılmaz, form verisi hiçbir yere gönderilmez.</p>
+    <p>Kurgusal iletişim: <a href="tel:+905550000000">+90 555 000 00 00</a> · <a href="mailto:merhaba@example.com">merhaba@example.com</a> · Deneme Sokak No: 0, Örnek Mahallesi, İstanbul</p>
+  </div>
+</footer>
+<div id="cerez-bandi" role="dialog" aria-label="Çerez tercihi" hidden>
+  <strong>Çerez tercihi</strong>
+  <div>Bu test sitesi reklam ve analiz ölçümü için Google Tag Manager kullanır. Onay vermezseniz Consent Mode varsayılanı (reddedildi) geçerli kalır.</div>
+  <div class="butonlar">
+    <button type="button" class="btn" id="cerez-kabul">Kabul et</button>
+    <button type="button" class="btn ikincil" id="cerez-red">Reddet</button>
+  </div>
+</div>
+<script>
+  (function () {
+    document.getElementById('cta-siparis-ver').addEventListener('click', function () {
+      window.location.href = 'products.html';
+    });
+
+    var form = document.getElementById('iletisim-formu');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      document.getElementById('form-basari').hidden = false;
+      window.dataLayer.push({ event: 'generate_lead', form_id: 'iletisim-formu' });
+      form.reset();
+    });
+
+    // history_change: the address changes without a page load.
+    document.getElementById('menu-sekmesi').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.getElementById('menu').hidden = false;
+      history.pushState({ bolum: 'menu' }, '', '?bolum=menu#menu');
+    });
+  })();
+</script>
+</body>
+</html>

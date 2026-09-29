@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Ürünler | Deneme Kahve Dükkanı (test sitesi)</title>
+<meta name="description" content="AdPilot ölçüm testleri için kurgusal kahve dükkanı. Gerçek bir işletme değildir.">
+<!-- Consent Mode v2 default: must run before Google Tag Manager -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+  (function () {
+    var choice = null;
+    try { choice = JSON.parse(localStorage.getItem('deneme_consent')); } catch (e) {}
+    if (choice === 'granted') {
+      gtag('consent', 'update', {
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        analytics_storage: 'granted'
+      });
+    }
+  })();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T897QT2B');</script>
+<!-- End Google Tag Manager -->
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/site.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T897QT2B"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="test-serit">Bu bir <strong>test sitesidir</strong>. Ürünler, fiyatlar ve iletişim bilgileri kurgusaldır; sipariş alınmaz.</div>
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="index.html">☕ Deneme Kahve Dükkanı</a>
+    <ul>
+      <li><a href="index.html">Ana sayfa</a></li>
+      <li><a href="products.html">Ürünler</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+      <li><a href="cart.html">Sepet (<span id="sepet-adet">0</span>)</a></li>
+    </ul>
+  </div>
+</header>
+<main>
+<section>
+  <div class="wrap">
+    <h1>Ürünler</h1>
+    <p>Fiyatlar kurgusaldır. Satın alma yapılamaz.</p>
+    <div class="grid" id="urun-listesi"></div>
+  </div>
+</section>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p><strong>Deneme Kahve Dükkanı</strong> gerçek bir işletme değildir. Bu site yalnızca AdPilot dönüşüm ölçümü testleri için hazırlanmış bir <strong>TEST SİTESİDİR</strong>; tüm veriler (ürünler, fiyatlar, telefon, e-posta, adres) kurgusaldır. Sipariş alınmaz, ödeme yapılmaz, form verisi hiçbir yere gönderilmez.</p>
+    <p>Kurgusal iletişim: <a href="tel:+905550000000">+90 555 000 00 00</a> · <a href="mailto:merhaba@example.com">merhaba@example.com</a> · Deneme Sokak No: 0, Örnek Mahallesi, İstanbul</p>
+  </div>
+</footer>
+<div id="cerez-bandi" role="dialog" aria-label="Çerez tercihi" hidden>
+  <strong>Çerez tercihi</strong>
+  <div>Bu test sitesi reklam ve analiz ölçümü için Google Tag Manager kullanır. Onay vermezseniz Consent Mode varsayılanı (reddedildi) geçerli kalır.</div>
+  <div class="butonlar">
+    <button type="button" class="btn" id="cerez-kabul">Kabul et</button>
+    <button type="button" class="btn ikincil" id="cerez-red">Reddet</button>
+  </div>
+</div>
+<script>
+  (function () {
+    var S = window.DenemeShop;
+    var list = document.getElementById('urun-listesi');
+    S.PRODUCTS.forEach(function (p) {
+      var card = document.createElement('div');
+      card.className = 'kart';
+      card.innerHTML = '<div class="gorsel" aria-hidden="true"></div><h3></h3><p class="fiyat"></p>' +
+        '<a class="btn" data-urun="' + p.slug + '" href="product.html?urun=' + p.slug + '">İncele</a>';
+      card.querySelector('h3').textContent = p.name;
+      card.querySelector('.fiyat').textContent = S.money(p.price);
+      list.appendChild(card);
+    });
+    S.pushEcommerce('view_item_list', {
+      item_list_id: 'tum_urunler',
+      item_list_name: 'Tüm ürünler',
+      items: S.PRODUCTS.map(function (p) { return S.toItem(p, 1); })
+    });
+  })();
+</script>
+</body>
+</html>
